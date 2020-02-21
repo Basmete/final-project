@@ -1,0 +1,27 @@
+@import '/public/bootstrap.min.css';
+
+.wrep {
+  max-width: 20rem;
+  margin: 20px auto; 
+
+  .card-image {
+
+    img {
+      display: block;
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+    }
+  }
+}
+
+
+
+.card-header {
+  font-weight: 500;
+  font-size: 30px;
+}
+
+.pokemon-card {
+  width: 500px;
+}
