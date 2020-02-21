@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PokemonCard from "../pokemon-card";
 import NavBar from "../navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -9,15 +8,13 @@ import { connect } from "react-redux";
 
 import "./app.scss";
 
-import JsonService from "../../services/json-service";
 import SideBar from "../sidebar";
 import PokemonInfo from "../pokemon-info";
 import { fetchPokemons } from '../../actions/catch-action';
 import PokemonCaughtField from "../pokemon-caught-field";
+import PokemonCard from "../pokemon-card";
 
 class App extends Component {
-
-  jsonService = new JsonService();
 
   state = {
     pokemons: []
@@ -60,7 +57,7 @@ class App extends Component {
                 exact
                 render={({ match }) => {
                   const { id } = match.params;
-                  return <PokemonInfo id={id} itemId={id} />;
+                  return <PokemonInfo {...pokemons[id - 1]} id={id} itemId={id}/>;
                 }}
               />
             </div>
