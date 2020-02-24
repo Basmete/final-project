@@ -12,15 +12,12 @@ import SideBar from "../sidebar";
 import PokemonInfo from "../pokemon-info";
 import { fetchPokemons } from '../../actions/catch-action';
 import PokemonCaughtField from "../pokemon-caught-field";
-import PokemonCard from "../pokemon-card";
 
 class App extends Component {
 
   state = {
     pokemons: []
   }
-
-
 
   componentDidMount() {
     this.props.fetchPokemons();
@@ -31,38 +28,35 @@ class App extends Component {
 
     return (
       <Router>
-        <div>
-          <NavBar />
-          
-            <div className="row">
-              {/* <PokemonCaughtField pokemonsObjects={pokemons}/> */}
-              <SideBar />
-              <Route
-                path="/pokemons"
-                exact
-                render={() => {
-                  return <PokemonField pokemonsObjects={pokemons} />;
-                }}
-              />
-              <Route
-                path="/pokemons-caught"
-                exact
-                render={() => {
-                  return <PokemonCaughtField pokemonsObjects={pokemons}/>;
-                }}
-              />
-              
-              <Route
-                path="/pokemons/:id"
-                exact
-                render={({ match }) => {
-                  const { id } = match.params;
-                  return <PokemonInfo {...pokemons[id - 1]} id={id} itemId={id}/>;
-                }}
-              />
-            </div>
-          
-          
+        <div className="container-fluid">
+          <div className="row no-gutters">
+            <NavBar />
+          </div>
+          <div className="row  no-gutters">
+            <SideBar />
+            <Route
+              path="/pokemons"
+              exact
+              render={() => {
+                return <PokemonField pokemonsObjects={pokemons} />;
+              }}
+            />
+            <Route
+              path="/pokemons-caught"
+              exact
+              render={() => {
+                return <PokemonCaughtField pokemonsObjects={pokemons}/>;
+              }}
+            />
+            <Route
+              path="/pokemons/:id"
+              exact
+              render={({ match }) => {
+                const { id } = match.params;
+                return <PokemonInfo {...pokemons[id - 1]} id={id} itemId={id}/>;
+              }}
+            />
+          </div>
         </div>
       </Router>
       
